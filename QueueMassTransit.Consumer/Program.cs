@@ -15,12 +15,12 @@ builder.Services.AddMassTransit(x =>
     x.AddConsumer<MessageConsumer>();
     x.UsingRabbitMq((context, cfg) =>
     {
-        cfg.Host("localhost", h =>
+        cfg.Host("myrabbit", h =>
         {
             h.Username("guest");
             h.Password("123456");
         });
-       
+
         cfg.ReceiveEndpoint("order-service", e =>
         {
             e.ConfigureConsumer<MessageConsumer>(context);
