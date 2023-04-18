@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "myrabbit": "StartWithoutDebugging",
+        "queuemasstransit.consumer": "StartDebugging",
+        "queuemasstransit.sender": "StartDebugging"
+      }
+    }
+  }
+}

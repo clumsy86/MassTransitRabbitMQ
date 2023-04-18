@@ -1,6 +1,4 @@
 using MassTransit;
-using RabbitMQ.Client;
-using SharedMessage;
 
 var builder = WebApplication.CreateBuilder(args);
 

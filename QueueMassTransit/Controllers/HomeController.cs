@@ -11,16 +11,19 @@ namespace QueueMassTransit.Sender.Controllers
     public class HomeController : ControllerBase
     {
         private readonly IPublishEndpoint publishEndpoint;
+        private readonly ILogger<HomeController> logger;
 
-        public HomeController(IPublishEndpoint publishEndpoint)
+        public HomeController(IPublishEndpoint publishEndpoint, ILogger<HomeController> logger)
         {
             this.publishEndpoint = publishEndpoint;
+            this.logger = logger;
         }
 
         [HttpGet]
         public async void Get()
         {
            await publishEndpoint.Publish(new Message{ Text = "some Text" });
+            logger.LogInformation("Message sent");
         }
 
     }

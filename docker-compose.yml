@@ -1,17 +1,17 @@
 version: '3.4'
 
 services:
-  queuemasstransit.consumer:
-    image: ${DOCKER_REGISTRY-}queuemasstransitconsumer
-    build:
-      context: .
-      dockerfile: QueueMassTransit.Consumer/Dockerfile
-
   queuemasstransit.sender:
     image: ${DOCKER_REGISTRY-}queuemasstransitsender
     build:
       context: .
       dockerfile: QueueMassTransit/Dockerfile
+
+  queuemasstransit.consumer:
+    image: ${DOCKER_REGISTRY-}queuemasstransitconsumer
+    build:
+      context: .
+      dockerfile: QueueMassTransit.Consumer/Dockerfile
 
   myrabbit:
     image: rabbitmq:3.10.7-management
@@ -23,3 +23,4 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
+  
