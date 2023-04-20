@@ -3,7 +3,6 @@ using QueueMassTransit.Consumer;
 using SharedMessage;
 
 var builder = WebApplication.CreateBuilder(args);
-var settingsRabbitMQ  = builder.Configuration.GetSection("RabbitMQ:Username");
 
 // Add services to the container.
 builder.Services.AddCors(options =>
