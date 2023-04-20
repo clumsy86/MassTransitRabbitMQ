@@ -14,8 +14,8 @@ builder.Services.AddMassTransit(x =>
     {
         cfg.Host("myrabbit", h =>
         {
-            h.Username("guest");
-            h.Password("123456");
+            h.Username(builder.Configuration.GetSection("RabbitMQ:Username").Value);
+            h.Password(builder.Configuration.GetSection("RabbitMQ:Password").Value);
         });
     });
    });

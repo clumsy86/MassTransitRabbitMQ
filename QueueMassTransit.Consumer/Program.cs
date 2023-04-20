@@ -3,6 +3,7 @@ using QueueMassTransit.Consumer;
 using SharedMessage;
 
 var builder = WebApplication.CreateBuilder(args);
+var settingsRabbitMQ  = builder.Configuration.GetSection("RabbitMQ:Username");
 
 // Add services to the container.
 builder.Services.AddCors(options =>
@@ -28,8 +29,8 @@ builder.Services.AddMassTransit(x =>
     {
         cfg.Host("myrabbit", h =>
         {
-            h.Username("guest");
-            h.Password("123456");
+            h.Username(builder.Configuration.GetSection("RabbitMQ:Username").Value);
+            h.Password(builder.Configuration.GetSection("RabbitMQ:Password").Value);
         });
 
         cfg.ReceiveEndpoint("order-service", e =>
